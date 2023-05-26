@@ -1,0 +1,82 @@
+/* RESET */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* STYLES */
+
+.hidden {
+  display: none;
+}
+
+.icon {
+  height: 50px;
+  width: 50px;
+  margin: 0.5em;
+}
+
+/* header {} */
+/* .navbar {} */
+/* .navbar h1 {} */
+/* .navbar button {} */
+/* .navbar button svg {} */
+/* main {} */
+/* .todo-form {} */
+/* .todo-form input {} */
+/* .todo-form span {} */
+/* .todo-list {} */
+/* .todo-list ul {} */
+/* .todo-list ul li {} */
+/* .todo-list ul li input[type="checkbox"] {} */
+/* .todo-list ul li span {} */
+/* .todo-list ul li button svg {} */
+/* .todo-list .clear p {} */
+/* .todo-list .clear button {} */
+/* .todo-list {} */
+/* .btn-group {} */
+/* .btn-group button {} */
+/* .btn-group button.active {} */
+/* .msg {} */
