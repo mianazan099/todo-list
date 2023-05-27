@@ -1,4 +1,62 @@
-/* RESET */
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+
+/********** VARIABLES **********/
+
+:root {
+  /* primary colors */
+  --clr-primary-blue: hsl(220, 98%, 61%);
+  --clr-primary-check-bg: linear-gradient(
+    hsl(192, 100%, 67%),
+    hsl(280, 87%, 65%)
+  );
+  /* Light theme colors */
+  --clr-light-100: hsl(0, 0%, 98%);
+  --clr-light-300: hsl(236, 33%, 92%);
+  --clr-light-400: hsl(233, 11%, 84%);
+  --clr-light-700: hsl(236, 9%, 61%);
+  --clr-light-900: hsl(235, 19%, 35%);
+  /* Dark theme colors */
+  --clr-dark-100: hsl(236, 33%, 92%);
+  --clr-dark-200: hsl(234, 39%, 85%);
+  --clr-dark-400: hsl(234, 11%, 52%);
+  --clr-dark-500: hsl(233, 14%, 35%);
+  --clr-dark-600: hsl(237, 14%, 26%);
+  --clr-dark-700: hsl(235, 24%, 19%);
+  --clr-dark-900: hsl(235, 21%, 11%);
+
+  /* Light Theme */
+  /* --clr-bg: var(--clr-light-300);
+  --clr-list-bg: var(--clr-light-100);
+  --clr-text: var(--clr-light-900);
+  --clr-hover: var(--clr-light-900);
+  --clr-text-light: var(--clr-light-700);
+  --clr-info: var(--clr-light-700);
+  --clr-checked: var(--clr-light-400); */
+
+  /* TYPOGRAPHY */
+  --ff-body: "Josefin Sans", sans-serif;
+  --fs-body: clamp(0.75rem, calc(0.62rem + 0.56vw), 1.13rem);
+  --fw-regular: 400;
+  --fw-bold: 700;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark Theme */
+    /* --clr-bg: var(--clr-dark-900);
+    --clr-list-bg: var(--clr-dark-700);
+    --clr-text: var(--clr-dark-200);
+    --clr-hover: var(--clr-dark-100);
+    --clr-text-light: var(--clr-dark-400);
+    --clr-info: var(--clr-dark-500);
+    --clr-checked: var(--clr-dark-600); */
+  }
+  * {
+    color-scheme: dark;
+  }
+}
+
+/********** RESET **********/
 
 *,
 *::before,
@@ -46,37 +104,90 @@ h6 {
   overflow-wrap: break-word;
 }
 
-/* STYLES */
+/********** STYLES **********/
 
-.hidden {
-  display: none;
+body {
+  font-family: var(--ff-body);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+  color: var(--clr-dark-200);
+  background-color: var(--clr-dark-900);
 }
 
-.icon {
-  height: 50px;
-  width: 50px;
-  margin: 0.5em;
+/* Header */
+
+.navbar,
+main {
+  width: min(33.75rem, 100% - 3rem);
+  margin-inline: auto;
 }
 
-/* header {} */
-/* .navbar {} */
-/* .navbar h1 {} */
-/* .navbar button {} */
-/* .navbar button svg {} */
-/* main {} */
-/* .todo-form {} */
-/* .todo-form input {} */
-/* .todo-form span {} */
+header {
+  height: clamp(12.5rem, calc(10.3rem + 9.39vw), 18.75rem);
+  background-image: url("images/bg-desktop-dark.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-block: clamp(3rem, calc(2.3rem + 3vw), 5rem);
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+}
+.navbar h1 {
+  color: white;
+  font-size: clamp(1.75rem, calc(1.49rem + 1.13vw), 2.5rem);
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+}
+.navbar button {
+  background: none;
+  border: none;
+}
+.navbar button .icon {
+  height: 1.75rem;
+  width: 1.75rem;
+}
+
+/* MAIN */
+
+main {
+}
+.todo-form {
+  position: relative;
+}
+.todo-form input {
+  width: 100%;
+  height: 3rem;
+  border: none;
+  border-radius: 0.5rem;
+  padding-inline: 3.5rem 2rem;
+  color: var(--clr-dark-400);
+}
+.todo-form span {
+  height: 1.25rem;
+  width: 1.25rem;
+  display: block;
+  border-radius: 50%;
+  border: 1px solid var(--clr-dark-600);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 1.25rem;
+}
 /* .todo-list {} */
 /* .todo-list ul {} */
 /* .todo-list ul li {} */
 /* .todo-list ul li input[type="checkbox"] {} */
 /* .todo-list ul li span {} */
-/* .todo-list ul li button svg {} */
+/* .todo-list ul li button .icon {} */
 /* .todo-list .clear p {} */
-/* .todo-list .clear button {} */
-/* .todo-list {} */
-/* .btn-group {} */
-/* .btn-group button {} */
-/* .btn-group button.active {} */
+/* .todo-list .clear > button {} */
+/* .filter-group {} */
+/* .filter-group button {} */
+/* .filter-group button.active {} */
 /* .msg {} */
+
+.hidden {
+  display: none;
+}

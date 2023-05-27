@@ -22,7 +22,7 @@
   </header>
   <main>
     <form class="todo-form">
-      <input type="text" name="todo" id="todo">
+      <input type="text" name="todo" id="todo" placeholder="Create a new todo...">
       <span></span>
     </form>
     <div class="todo-list">
@@ -48,13 +48,13 @@
       </ul>
       <div class="clear">
         <p>5 items left</p>
+        <div class="filter-group">
+          <button>All</button>
+          <button>Active</button>
+          <button>Completed</button>
+        </div>
         <button>Clear Completed</button>
       </div>
-    </div>
-    <div class="btn-group">
-      <button>All</button>
-      <button>Active</button>
-      <button>Completed</button>
     </div>
   </main>
   <p class="msg">Drag and drop to reorder list</p>
