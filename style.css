@@ -6,15 +6,16 @@
   /* primary colors */
   --clr-primary-blue: hsl(220, 98%, 61%);
   --clr-primary-check-bg: linear-gradient(
+    0.4turn,
     hsl(192, 100%, 67%),
     hsl(280, 87%, 65%)
   );
   /* Light theme colors */
-  --clr-light-100: hsl(0, 0%, 98%);
-  --clr-light-300: hsl(236, 33%, 92%);
-  --clr-light-400: hsl(233, 11%, 84%);
-  --clr-light-700: hsl(236, 9%, 61%);
-  --clr-light-900: hsl(235, 19%, 35%);
+  /* --clr-light-100: hsl(0, 0%, 98%); */
+  /* --clr-light-300: hsl(236, 33%, 92%); */
+  /* --clr-light-400: hsl(233, 11%, 84%); */
+  /* --clr-light-700: hsl(236, 9%, 61%); */
+  /* --clr-light-900: hsl(235, 19%, 35%); */
   /* Dark theme colors */
   --clr-dark-100: hsl(236, 33%, 92%);
   --clr-dark-200: hsl(234, 39%, 85%);
@@ -36,6 +37,8 @@
   /* TYPOGRAPHY */
   --ff-body: "Josefin Sans", sans-serif;
   --fs-body: clamp(0.75rem, calc(0.62rem + 0.56vw), 1.13rem);
+  --fs-heading: clamp(1.75rem, calc(1.44rem + 1.31vw), 2.63rem);
+  --fs-msg: 0.875rem;
   --fw-regular: 400;
   --fw-bold: 700;
 }
@@ -114,80 +117,200 @@ body {
   background-color: var(--clr-dark-900);
 }
 
-/* Header */
+.hidden {
+  display: none;
+}
 
-.navbar,
-main {
+.container {
   width: min(33.75rem, 100% - 3rem);
   margin-inline: auto;
 }
 
+/* Header */
+
 header {
   height: clamp(12.5rem, calc(10.3rem + 9.39vw), 18.75rem);
-  background-image: url("images/bg-desktop-dark.jpg");
+  background-image: url("images/bg-mobile-dark.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   padding-block: clamp(3rem, calc(2.3rem + 3vw), 5rem);
 }
+
 .navbar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
+
 .navbar h1 {
+  font-size: var(--fs-heading);
   color: white;
-  font-size: clamp(1.75rem, calc(1.49rem + 1.13vw), 2.5rem);
   text-transform: uppercase;
   letter-spacing: 0.32em;
 }
+
 .navbar button {
   background: none;
   border: none;
 }
+
 .navbar button .icon {
-  height: 1.75rem;
-  width: 1.75rem;
+  height: clamp(1.25rem, calc(1.12rem + 0.56vw), 1.63rem);
+  aspect-ratio: 1;
 }
 
-/* MAIN */
+@media (max-width: 40rem) {
+  header {
+    background-image: url("images/bg-desktop-dark.jpg");
+  }
+}
+
+/* main */
 
 main {
+  position: absolute;
+  top: clamp(6.75rem, calc(5.65rem + 4.69vw), 9.88rem);
+  left: 50%;
+  transform: translateX(-50%);
 }
+
 .todo-form {
+  margin-bottom: clamp(1rem, calc(0.82rem + 0.75vw), 1.5rem);
+}
+
+.todo-input {
+  height: clamp(3rem, calc(2.65rem + 1.5vw), 4rem);
   position: relative;
 }
-.todo-form input {
+
+.todo-input input {
   width: 100%;
-  height: 3rem;
+  height: 100%;
   border: none;
   border-radius: 0.5rem;
-  padding-inline: 3.5rem 2rem;
-  color: var(--clr-dark-400);
+  padding-inline: clamp(3.25rem, calc(2.77rem + 2.07vw), 4.63rem) 2rem;
+  background-color: var(--clr-dark-700);
+  outline: none;
 }
-.todo-form span {
-  height: 1.25rem;
-  width: 1.25rem;
+
+.todo-input span {
+  height: clamp(1.25rem, calc(1.12rem + 0.56vw), 1.63rem);
+  aspect-ratio: 1;
   display: block;
   border-radius: 50%;
   border: 1px solid var(--clr-dark-600);
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: 1.25rem;
+  left: clamp(1.25rem, calc(1.16rem + 0.38vw), 1.5rem);
 }
-/* .todo-list {} */
-/* .todo-list ul {} */
-/* .todo-list ul li {} */
-/* .todo-list ul li input[type="checkbox"] {} */
+/* todo list */
+
+.todo-list {
+  background-color: var(--clr-dark-700);
+  border-radius: 0.5em;
+  overflow: hidden;
+}
+
+.todo-list ul {
+  padding: 0;
+}
+
+.todo-list ul li {
+  list-style: none;
+  height: clamp(3.25rem, calc(2.99rem + 1.13vw), 4rem);
+  border-bottom: 1px solid var(--clr-dark-600);
+  display: flex;
+  align-items: center;
+  padding-inline: clamp(1.25rem, calc(1.16rem + 0.38vw), 1.5rem);
+  justify-content: space-between;
+}
+
+.todo-list ul li label {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.75rem, calc(0.49rem + 1.13vw), 1.5rem);
+  cursor: pointer;
+}
+
+.todo-list ul li input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  /* margin: 0; */
+  /* font: inherit; */
+  /* color: currentColor; */
+  height: clamp(1.25rem, calc(1.12rem + 0.56vw), 1.63rem);
+  aspect-ratio: 1;
+  background-color: var(--clr-dark-600);
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  position: relative;
+  transform: translateY(-0.075em);
+  cursor: pointer;
+}
+
+.todo-list ul li input[type="checkbox"]::before {
+  content: "";
+  height: calc(clamp(1.25rem, calc(1.12rem + 0.56vw), 1.63rem) - 2px);
+  aspect-ratio: 1;
+  background-color: var(--clr-dark-700);
+  border-radius: 50%;
+}
+
+.todo-list ul li input[type="checkbox"]:hover {
+  background: var(--clr-primary-check-bg);
+}
+
+.todo-list ul li input[type="checkbox"]::after {
+  content: "";
+  width: calc(clamp(1.25rem, calc(1.12rem + 0.56vw), 1.63rem) - 6px);
+  aspect-ratio: 1;
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em white;
+  transform-origin: bottom left;
+  clip-path: polygon(28% 38%, 41% 53%, 75% 24%, 86% 38%, 40% 78%, 15% 50%);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.todo-list ul li input[type="checkbox"]:checked::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+.todo-list ul li input[type="checkbox"]:checked {
+  background: var(--clr-primary-check-bg);
+}
+.todo-list ul li input[type="checkbox"]:checked::before {
+  background: var(--clr-primary-check-bg);
+}
+
 /* .todo-list ul li span {} */
-/* .todo-list ul li button .icon {} */
+
+.todo-list ul li button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+@media (hover) {
+  .todo-list ul li button {
+    display: none;
+  }
+  .todo-list ul li:hover button {
+    display: inline-block;
+  }
+}
+
+.todo-list ul li button .icon {
+  height: clamp(1rem, calc(0.91rem + 0.38vw), 1.25rem);
+  aspect-ratio: 1;
+}
 /* .todo-list .clear p {} */
 /* .todo-list .clear > button {} */
 /* .filter-group {} */
 /* .filter-group button {} */
 /* .filter-group button.active {} */
 /* .msg {} */
-
-.hidden {
-  display: none;
-}

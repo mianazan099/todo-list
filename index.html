@@ -11,7 +11,7 @@
 
 <body>
   <header>
-    <div class="navbar">
+    <div class="navbar container">
       <h1>Todo</h1>
       <button>
         <svg class="icon">
@@ -20,16 +20,20 @@
       </button>
     </div>
   </header>
-  <main>
+  <main class="container">
     <form class="todo-form">
-      <input type="text" name="todo" id="todo" placeholder="Create a new todo...">
-      <span></span>
+      <div class="todo-input">
+        <input type="text" name="todo" id="todo" placeholder="Create a new todo...">
+        <span></span>
+      </div>
     </form>
     <div class="todo-list">
       <ul>
         <li>
-          <input type="checkbox" name="" id="">
-          <span>Complete Online JavaScript Course</span>
+          <label>
+            <input type="checkbox" name="" id="">
+            <span>Complete Online JavaScript Course</span>
+          </label>
           <button>
             <svg class="icon">
               <use xlink:href="#icon-cross"></use>
@@ -37,8 +41,10 @@
           </button>
         </li>
         <li>
-          <input type="checkbox" name="" id="">
-          <span>Jog around the park 3x</span>
+          <label>
+            <input type="checkbox" name="" id="">
+            <span>Jog around the park 3x</span>
+          </label>
           <button>
             <svg class="icon">
               <use xlink:href="#icon-cross"></use>
@@ -56,8 +62,8 @@
         <button>Clear Completed</button>
       </div>
     </div>
+    <p class="msg">Drag and drop to reorder list</p>
   </main>
-  <p class="msg">Drag and drop to reorder list</p>
   <!-- <svg class="icon"><use xlink:href="#icon-sun"></use></svg> -->
   <!-- <svg class="icon"><use xlink:href="#icon-check"></use></svg> -->
   <!-- <svg class="icon"><use xlink:href="#icon-cross"></use></svg> -->
