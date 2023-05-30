@@ -160,7 +160,7 @@ header {
   aspect-ratio: 1;
 }
 
-@media (max-width: 40rem) {
+@media (min-width: 40rem) {
   header {
     background-image: url("images/bg-desktop-dark.jpg");
   }
@@ -192,6 +192,7 @@ main {
   padding-inline: clamp(3.25rem, calc(2.77rem + 2.07vw), 4.63rem) 2rem;
   background-color: var(--clr-dark-700);
   outline: none;
+  color: var(--clr-dark-200);
 }
 
 .todo-input span {
@@ -287,6 +288,11 @@ main {
   background: var(--clr-primary-check-bg);
 }
 
+.todo-list ul li input[type="checkbox"]:checked + span {
+  text-decoration: line-through;
+  color: var(--clr-dark-500);
+}
+
 /* .todo-list ul li span {} */
 
 .todo-list ul li button {
@@ -308,9 +314,60 @@ main {
   height: clamp(1rem, calc(0.91rem + 0.38vw), 1.25rem);
   aspect-ratio: 1;
 }
+
+.todo-list .clear,
+.msg {
+  font-size: var(--fs-msg);
+  color: var(--clr-dark-500);
+}
+
+.todo-list .clear {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: clamp(3.25rem, calc(2.99rem + 1.13vw), 4rem);
+  padding-inline: clamp(1.25rem, calc(1.16rem + 0.38vw), 1.5rem);
+}
+
 /* .todo-list .clear p {} */
-/* .todo-list .clear > button {} */
-/* .filter-group {} */
-/* .filter-group button {} */
-/* .filter-group button.active {} */
-/* .msg {} */
+.todo-list .clear button {
+  background: none;
+  border: none;
+  color: currentColor;
+  cursor: pointer;
+}
+.todo-list .clear button:hover {
+  color: var(--clr-dark-200);
+}
+.todo-list .clear > button {
+}
+.filter-group button {
+  font-weight: var(--fw-bold);
+}
+.filter-group button.active,
+.filter-group button.active:hover {
+  color: var(--clr-primary-blue);
+}
+.msg {
+  text-align: center;
+  margin-top: 3.25rem;
+}
+
+@media (max-width: 40rem) {
+  .filter-group {
+    position: absolute;
+    bottom: 4.5rem;
+    background-color: var(--clr-dark-700);
+    width: 100%;
+    left: 0;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 0.5em;
+  }
+  .msg {
+    margin-top: 6.63rem;
+  }
+}
