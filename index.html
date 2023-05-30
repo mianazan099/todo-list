@@ -28,30 +28,7 @@
       </div>
     </form>
     <div class="todo-list">
-      <ul>
-        <li>
-          <label>
-            <input type="checkbox" name="" id="">
-            <span>Complete Online JavaScript Course</span>
-          </label>
-          <button>
-            <svg class="icon">
-              <use xlink:href="#icon-cross"></use>
-            </svg>
-          </button>
-        </li>
-        <li>
-          <label>
-            <input type="checkbox" name="" id="">
-            <span>Jog around the park 3x</span>
-          </label>
-          <button>
-            <svg class="icon">
-              <use xlink:href="#icon-cross"></use>
-            </svg>
-          </button>
-        </li>
-      </ul>
+      <ul></ul>
       <div class="clear">
         <p>5 items left</p>
         <div class="filter-group">
@@ -59,7 +36,7 @@
           <button>Active</button>
           <button>Completed</button>
         </div>
-        <button>Clear Completed</button>
+        <button onclick="clearCompleted()">Clear Completed</button>
       </div>
     </div>
     <p class="msg">Drag and drop to reorder list</p>
@@ -88,6 +65,7 @@
       </path>
     </symbol>
   </svg>
+  <script src="script.js"></script>
 </body>
 
 </html>
