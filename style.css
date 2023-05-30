@@ -11,30 +11,19 @@
     hsl(280, 87%, 65%)
   );
   /* Light theme colors */
-  /* --clr-light-100: hsl(0, 0%, 98%); */
-  /* --clr-light-300: hsl(236, 33%, 92%); */
-  /* --clr-light-400: hsl(233, 11%, 84%); */
-  /* --clr-light-700: hsl(236, 9%, 61%); */
-  /* --clr-light-900: hsl(235, 19%, 35%); */
+  --clr-light-100: hsl(0, 0%, 98%);
+  --clr-light-300: hsl(236, 33%, 92%);
+  --clr-light-400: hsl(233, 11%, 84%);
+  --clr-light-700: hsl(236, 9%, 61%);
+  --clr-light-900: hsl(235, 19%, 35%);
   /* Dark theme colors */
-  --clr-dark-100: hsl(236, 33%, 92%);
   --clr-dark-200: hsl(234, 39%, 85%);
-  --clr-dark-400: hsl(234, 11%, 52%);
   --clr-dark-500: hsl(233, 14%, 35%);
   --clr-dark-600: hsl(237, 14%, 26%);
   --clr-dark-700: hsl(235, 24%, 19%);
   --clr-dark-900: hsl(235, 21%, 11%);
 
-  /* Light Theme */
-  /* --clr-bg: var(--clr-light-300);
-  --clr-list-bg: var(--clr-light-100);
-  --clr-text: var(--clr-light-900);
-  --clr-hover: var(--clr-light-900);
-  --clr-text-light: var(--clr-light-700);
-  --clr-info: var(--clr-light-700);
-  --clr-checked: var(--clr-light-400); */
-
-  /* TYPOGRAPHY */
+  /* Typography */
   --ff-body: "Josefin Sans", sans-serif;
   --fs-body: clamp(0.75rem, calc(0.62rem + 0.56vw), 1.13rem);
   --fs-heading: clamp(1.75rem, calc(1.44rem + 1.31vw), 2.63rem);
@@ -44,16 +33,6 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    /* Dark Theme */
-    /* --clr-bg: var(--clr-dark-900);
-    --clr-list-bg: var(--clr-dark-700);
-    --clr-text: var(--clr-dark-200);
-    --clr-hover: var(--clr-dark-100);
-    --clr-text-light: var(--clr-dark-400);
-    --clr-info: var(--clr-dark-500);
-    --clr-checked: var(--clr-dark-600); */
-  }
   * {
     color-scheme: dark;
   }
@@ -113,8 +92,8 @@ body {
   font-family: var(--ff-body);
   font-size: var(--fs-body);
   font-weight: var(--fw-regular);
-  color: var(--clr-dark-200);
-  background-color: var(--clr-dark-900);
+  color: var(--clr-text-1);
+  background-color: var(--clr-bg);
 }
 
 .hidden {
@@ -124,6 +103,22 @@ body {
 .container {
   width: min(33.75rem, 100% - 3rem);
   margin-inline: auto;
+}
+
+.light {
+  --clr-bg: var(--clr-light-300);
+  --clr-bg-2: var(--clr-light-100);
+  --clr-text-1: var(--clr-light-900);
+  --clr-text-2: var(--clr-light-700);
+  --clr-text-3: var(--clr-light-400);
+}
+
+.dark {
+  --clr-bg: var(--clr-dark-900);
+  --clr-bg-2: var(--clr-dark-700);
+  --clr-text-1: var(--clr-dark-200);
+  --clr-text-2: var(--clr-dark-500);
+  --clr-text-3: var(--clr-dark-600);
 }
 
 /* Header */
@@ -190,9 +185,9 @@ main {
   border: none;
   border-radius: 0.5rem;
   padding-inline: clamp(3.25rem, calc(2.77rem + 2.07vw), 4.63rem) 2rem;
-  background-color: var(--clr-dark-700);
+  background-color: var(--clr-bg-2);
   outline: none;
-  color: var(--clr-dark-200);
+  color: var(--clr-text-1);
 }
 
 .todo-input span {
@@ -200,7 +195,7 @@ main {
   aspect-ratio: 1;
   display: block;
   border-radius: 50%;
-  border: 1px solid var(--clr-dark-600);
+  border: 1px solid var(--clr-text-3);
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -209,7 +204,7 @@ main {
 /* todo list */
 
 .todo-list {
-  background-color: var(--clr-dark-700);
+  background-color: var(--clr-bg-2);
   border-radius: 0.5em;
   overflow: hidden;
 }
@@ -221,7 +216,7 @@ main {
 .todo-list ul li {
   list-style: none;
   height: clamp(3.25rem, calc(2.99rem + 1.13vw), 4rem);
-  border-bottom: 1px solid var(--clr-dark-600);
+  border-bottom: 1px solid var(--clr-text-3);
   display: flex;
   align-items: center;
   padding-inline: clamp(1.25rem, calc(1.16rem + 0.38vw), 1.5rem);
@@ -243,7 +238,7 @@ main {
   /* color: currentColor; */
   height: clamp(1.25rem, calc(1.12rem + 0.56vw), 1.63rem);
   aspect-ratio: 1;
-  background-color: var(--clr-dark-600);
+  background-color: var(--clr-text-3);
   border-radius: 50%;
   display: grid;
   place-content: center;
@@ -256,7 +251,7 @@ main {
   content: "";
   height: calc(clamp(1.25rem, calc(1.12rem + 0.56vw), 1.63rem) - 2px);
   aspect-ratio: 1;
-  background-color: var(--clr-dark-700);
+  background-color: var(--clr-bg-2);
   border-radius: 50%;
 }
 
@@ -290,7 +285,7 @@ main {
 
 .todo-list ul li input[type="checkbox"]:checked + span {
   text-decoration: line-through;
-  color: var(--clr-dark-500);
+  color: var(--clr-text-2);
 }
 
 /* .todo-list ul li span {} */
@@ -318,7 +313,7 @@ main {
 .todo-list .clear,
 .msg {
   font-size: var(--fs-msg);
-  color: var(--clr-dark-500);
+  color: var(--clr-text-2);
 }
 
 .todo-list .clear {
@@ -337,10 +332,9 @@ main {
   cursor: pointer;
 }
 .todo-list .clear button:hover {
-  color: var(--clr-dark-200);
+  color: var(--clr-text-1);
 }
-.todo-list .clear > button {
-}
+/* .todo-list .clear > button {} */
 .filter-group button {
   font-weight: var(--fw-bold);
 }
@@ -357,7 +351,7 @@ main {
   .filter-group {
     position: absolute;
     bottom: 4.5rem;
-    background-color: var(--clr-dark-700);
+    background-color: var(--clr-bg-2);
     width: 100%;
     left: 0;
     display: flex;

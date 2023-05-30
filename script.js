@@ -1,6 +1,8 @@
 const todoForm = document.querySelector(".todo-form");
 const todoInput = document.querySelector(".todo-input input");
 const todoList = document.querySelector(".todo-list ul");
+const itemsLeft = document.querySelector(".items-left span");
+const filterBtn = document.querySelectorAll(".filter-group button");
 
 let todoArray = [
   { id: 123, todo: "first", completed: true },
@@ -28,9 +30,17 @@ function createHTML(html) {
   return template.content.firstElementChild;
 }
 
-function createTodoList() {
+function createTodoList(filter) {
   todoList.innerHTML = "";
-  todoArray.forEach((todo) => {
+  let innerTodoArr = todoArray;
+  // filterBtn[0].classList.add("active")
+  if (filter === "active") {
+    innerTodoArr = todoArray.filter((todo) => !todo.completed);
+  } else if (filter === "completed") {
+    innerTodoArr = todoArray.filter((todo) => todo.completed);
+  }
+  console.log(innerTodoArr);
+  innerTodoArr.forEach((todo) => {
     todoList.appendChild(
       createHTML(
         `<li>
@@ -40,7 +50,7 @@ function createTodoList() {
         }>
             <span>${todo.todo}</span>
           </label>
-          <button>
+          <button onclick="removeTodo(${todo.id})">
             <svg class="icon">
               <use xlink:href="#icon-cross"></use>
             </svg>
@@ -50,6 +60,8 @@ function createTodoList() {
     );
   });
   addListener();
+
+  itemsLeft.textContent = todoArray.length;
 }
 
 function clearCompleted() {
@@ -73,8 +85,53 @@ function addListener() {
   });
 }
 
-// todoList.appendChild(createHTML(todoHTML));
+function removeTodo(id) {
+  todoArray = todoArray.filter((todo) => !(todo.id === id));
+  createTodoList();
+}
 
-// todoInput.addEventListener("input", (e) => {
-//   todo = e.target.value;
-// });
+// theme switcher
+
+const themeSwitch = document.querySelector(".navbar button");
+const body = document.body;
+
+const darkColor = window.matchMedia("(prefers-color-scheme: dark)").matches;
+if (localStorage.getItem("theme") === null)
+  localStorage.setItem("theme", darkColor ? "dark" : "light");
+
+const theme = localStorage.getItem("theme");
+body.classList.add(theme);
+
+switch (theme) {
+  case "dark":
+    themeSwitch.innerHTML =
+      '<svg class="icon"><use xlink:href="#icon-sun"></use></svg>';
+    break;
+  case "light":
+    themeSwitch.innerHTML =
+      '<svg class="icon"><use xlink:href="#icon-moon"></use></svg>';
+    break;
+}
+
+themeSwitch.addEventListener("click", () => {
+  if (body.classList.contains("dark")) {
+    localStorage.setItem("theme", "light");
+    body.classList.replace("dark", "light");
+    themeSwitch.innerHTML =
+      '<svg class="icon"><use xlink:href="#icon-moon"></use></svg>';
+  } else {
+    localStorage.setItem("theme", "dark");
+    body.classList.replace("light", "dark");
+    themeSwitch.innerHTML =
+      '<svg class="icon"><use xlink:href="#icon-sun"></use></svg>';
+  }
+});
+
+filterBtn.forEach((el) => {
+  el.addEventListener("click", () => {
+    filterBtn.forEach((el) => {
+      el.classList.remove("active");
+    });
+    el.classList.add("active");
+  });
+});
