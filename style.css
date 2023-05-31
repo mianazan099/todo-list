@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
 
-/********** VARIABLES **********/
+/* ********* VARIABLES ********* */
 
 :root {
   /* primary colors */
@@ -10,12 +10,14 @@
     hsl(192, 100%, 67%),
     hsl(280, 87%, 65%)
   );
+
   /* Light theme colors */
   --clr-light-100: hsl(0, 0%, 98%);
   --clr-light-300: hsl(236, 33%, 92%);
   --clr-light-400: hsl(233, 11%, 84%);
   --clr-light-700: hsl(236, 9%, 61%);
   --clr-light-900: hsl(235, 19%, 35%);
+
   /* Dark theme colors */
   --clr-dark-200: hsl(234, 39%, 85%);
   --clr-dark-500: hsl(233, 14%, 35%);
@@ -25,20 +27,43 @@
 
   /* Typography */
   --ff-body: "Josefin Sans", sans-serif;
+
   --fs-body: clamp(0.75rem, calc(0.62rem + 0.56vw), 1.13rem);
   --fs-heading: clamp(1.75rem, calc(1.44rem + 1.31vw), 2.63rem);
   --fs-msg: 0.875rem;
+
   --fw-regular: 400;
   --fw-bold: 700;
 }
 
-@media (prefers-color-scheme: dark) {
-  * {
-    color-scheme: dark;
+body.light {
+  --bg-img: url("images/bg-desktop-light.jpg");
+  --clr-bg: var(--clr-light-300);
+  --clr-bg-2: var(--clr-light-100);
+  --clr-text-1: var(--clr-light-900);
+  --clr-text-2: var(--clr-light-700);
+  --clr-text-3: var(--clr-light-400);
+}
+
+body.dark {
+  --bg-img: url("images/bg-desktop-dark.jpg");
+  --clr-bg: var(--clr-dark-900);
+  --clr-bg-2: var(--clr-dark-700);
+  --clr-text-1: var(--clr-dark-200);
+  --clr-text-2: var(--clr-dark-500);
+  --clr-text-3: var(--clr-dark-600);
+}
+
+@media (max-width: 40rem) {
+  body.light {
+    --bg-img: url("images/bg-mobile-light.jpg");
+  }
+  body.dark {
+    --bg-img: url("images/bg-mobile-dark.jpg");
   }
 }
 
-/********** RESET **********/
+/* ********* RESET ********* */
 
 *,
 *::before,
@@ -76,6 +101,13 @@ select {
   font: inherit;
 }
 
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: currentColor;
+}
+
 p,
 h1,
 h2,
@@ -86,7 +118,7 @@ h6 {
   overflow-wrap: break-word;
 }
 
-/********** STYLES **********/
+/* ********* STYLES ********* */
 
 body {
   font-family: var(--ff-body);
@@ -103,33 +135,6 @@ body {
 .container {
   width: min(33.75rem, 100% - 3rem);
   margin-inline: auto;
-}
-
-.light {
-  --bg-img: url("images/bg-desktop-light.jpg");
-  --clr-bg: var(--clr-light-300);
-  --clr-bg-2: var(--clr-light-100);
-  --clr-text-1: var(--clr-light-900);
-  --clr-text-2: var(--clr-light-700);
-  --clr-text-3: var(--clr-light-400);
-}
-
-.dark {
-  --bg-img: url("images/bg-desktop-dark.jpg");
-  --clr-bg: var(--clr-dark-900);
-  --clr-bg-2: var(--clr-dark-700);
-  --clr-text-1: var(--clr-dark-200);
-  --clr-text-2: var(--clr-dark-500);
-  --clr-text-3: var(--clr-dark-600);
-}
-
-@media (max-width: 40rem) {
-  .light {
-    --bg-img: url("images/bg-mobile-light.jpg");
-  }
-  .dark {
-    --bg-img: url("images/bg-mobile-dark.jpg");
-  }
 }
 
 /* Header */
@@ -156,18 +161,14 @@ header {
   letter-spacing: 0.32em;
 }
 
-.navbar button {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
+/* .navbar button {} */
 
 .navbar button .icon {
   height: clamp(1.25rem, calc(1.12rem + 0.56vw), 1.63rem);
   aspect-ratio: 1;
 }
 
-/* main */
+/* Main */
 
 main {
   position: absolute;
@@ -175,6 +176,8 @@ main {
   left: 50%;
   transform: translateX(-50%);
 }
+
+/* Todo Form */
 
 .todo-form {
   margin-bottom: clamp(1rem, calc(0.82rem + 0.75vw), 1.5rem);
@@ -189,7 +192,7 @@ main {
   width: 100%;
   height: 100%;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 0.5em;
   padding-inline: clamp(3.25rem, calc(2.77rem + 2.07vw), 4.63rem) 2rem;
   background-color: var(--clr-bg-2);
   outline: none;
@@ -207,7 +210,8 @@ main {
   transform: translateY(-50%);
   left: clamp(1.25rem, calc(1.16rem + 0.38vw), 1.5rem);
 }
-/* todo list */
+
+/* Todo List */
 
 .todo-list {
   background-color: var(--clr-bg-2);
@@ -223,9 +227,9 @@ main {
   list-style: none;
   height: clamp(3.25rem, calc(2.99rem + 1.13vw), 4rem);
   border-bottom: 1px solid var(--clr-text-3);
+  padding-inline: clamp(1.25rem, calc(1.16rem + 0.38vw), 1.5rem);
   display: flex;
   align-items: center;
-  padding-inline: clamp(1.25rem, calc(1.16rem + 0.38vw), 1.5rem);
   justify-content: space-between;
 }
 
@@ -237,11 +241,7 @@ main {
 }
 
 .todo-list ul li input[type="checkbox"] {
-  -webkit-appearance: none;
   appearance: none;
-  /* margin: 0; */
-  /* font: inherit; */
-  /* color: currentColor; */
   height: clamp(1.25rem, calc(1.12rem + 0.56vw), 1.63rem);
   aspect-ratio: 1;
   background-color: var(--clr-text-3);
@@ -249,7 +249,6 @@ main {
   display: grid;
   place-content: center;
   position: relative;
-  transform: translateY(-0.075em);
   cursor: pointer;
 }
 
@@ -282,9 +281,11 @@ main {
 .todo-list ul li input[type="checkbox"]:checked::after {
   transform: translate(-50%, -50%) scale(1);
 }
+
 .todo-list ul li input[type="checkbox"]:checked {
   background: var(--clr-primary-check-bg);
 }
+
 .todo-list ul li input[type="checkbox"]:checked::before {
   background: var(--clr-primary-check-bg);
 }
@@ -295,17 +296,13 @@ main {
 }
 
 /* .todo-list ul li span {} */
-
-.todo-list ul li button {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
+/* .todo-list ul li button {} */
 
 @media (hover) {
   .todo-list ul li button {
     display: none;
   }
+
   .todo-list ul li:hover button {
     display: inline-block;
   }
@@ -323,31 +320,38 @@ main {
 }
 
 .todo-list .clear {
+  height: clamp(3.25rem, calc(2.99rem + 1.13vw), 4rem);
+  padding-inline: clamp(1.25rem, calc(1.16rem + 0.38vw), 1.5rem);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: clamp(3.25rem, calc(2.99rem + 1.13vw), 4rem);
-  padding-inline: clamp(1.25rem, calc(1.16rem + 0.38vw), 1.5rem);
 }
 
 /* .todo-list .clear p {} */
-.todo-list .clear button {
-  background: none;
-  border: none;
-  color: currentColor;
-  cursor: pointer;
-}
+/* .todo-list .clear button {} */
+
 .todo-list .clear button:hover {
   color: var(--clr-text-1);
 }
+
 /* .todo-list .clear > button {} */
+
+.filter-group {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
 .filter-group button {
   font-weight: var(--fw-bold);
 }
+
 .filter-group button.active,
 .filter-group button.active:hover {
   color: var(--clr-primary-blue);
 }
+
 .msg {
   text-align: center;
   margin-top: 3.25rem;
@@ -356,18 +360,15 @@ main {
 
 @media (max-width: 40rem) {
   .filter-group {
-    position: absolute;
-    bottom: 5.5rem;
     background-color: var(--clr-bg-2);
     width: 100%;
+    position: absolute;
+    bottom: 4.75rem;
     left: 0;
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem;
+    padding: 0.75rem;
     border-radius: 0.5em;
   }
+
   .msg {
     margin-top: 6.63rem;
   }
