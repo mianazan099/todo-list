@@ -106,6 +106,7 @@ body {
 }
 
 .light {
+  --bg-img: url("images/bg-desktop-light.jpg");
   --clr-bg: var(--clr-light-300);
   --clr-bg-2: var(--clr-light-100);
   --clr-text-1: var(--clr-light-900);
@@ -114,6 +115,7 @@ body {
 }
 
 .dark {
+  --bg-img: url("images/bg-desktop-dark.jpg");
   --clr-bg: var(--clr-dark-900);
   --clr-bg-2: var(--clr-dark-700);
   --clr-text-1: var(--clr-dark-200);
@@ -121,11 +123,20 @@ body {
   --clr-text-3: var(--clr-dark-600);
 }
 
+@media (max-width: 40rem) {
+  .light {
+    --bg-img: url("images/bg-mobile-light.jpg");
+  }
+  .dark {
+    --bg-img: url("images/bg-mobile-dark.jpg");
+  }
+}
+
 /* Header */
 
 header {
   height: clamp(12.5rem, calc(10.3rem + 9.39vw), 18.75rem);
-  background-image: url("images/bg-mobile-dark.jpg");
+  background-image: var(--bg-img);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -148,17 +159,12 @@ header {
 .navbar button {
   background: none;
   border: none;
+  cursor: pointer;
 }
 
 .navbar button .icon {
   height: clamp(1.25rem, calc(1.12rem + 0.56vw), 1.63rem);
   aspect-ratio: 1;
-}
-
-@media (min-width: 40rem) {
-  header {
-    background-image: url("images/bg-desktop-dark.jpg");
-  }
 }
 
 /* main */
@@ -345,12 +351,13 @@ main {
 .msg {
   text-align: center;
   margin-top: 3.25rem;
+  margin-bottom: 1rem;
 }
 
 @media (max-width: 40rem) {
   .filter-group {
     position: absolute;
-    bottom: 4.5rem;
+    bottom: 5.5rem;
     background-color: var(--clr-bg-2);
     width: 100%;
     left: 0;
