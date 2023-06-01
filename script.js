@@ -63,8 +63,8 @@ todoForm.addEventListener("submit", (e) => {
 
 filterBtn.forEach((el) => {
   el.addEventListener("click", () => {
-    filterBtn.forEach((el) => {
-      el.classList.remove("active");
+    filterBtn.forEach((el2) => {
+      el2.classList.remove("active");
     });
     el.classList.add("active");
   });
@@ -85,6 +85,8 @@ function createTodoList(filter) {
       break;
     default:
       filteredTodoList = todoArray;
+      filterBtn.forEach((el) => el.classList.remove("active"));
+      filterBtn[0].classList.add("active");
       break;
   }
 
